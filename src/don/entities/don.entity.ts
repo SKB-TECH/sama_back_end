@@ -1,6 +1,6 @@
 import { TimeStamps } from '../../Times/timestamp.entity';
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { categirie_don, type_donateur } from "../don_enum/donateur_type";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { categirie_don, type_donateur } from '../don_enum/donateur_type';
 
 @Entity('don')
 export class donEntity extends TimeStamps {

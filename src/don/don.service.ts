@@ -42,6 +42,10 @@ export class DonService {
     return await this.donRepository.softDelete(id);
   }
   async restore(id: string) {
-    return await this.donRepository.restore(id)
+    return await this.donRepository.restore(id);
+  }
+  //nouveau don
+  async nouveauDon (){
+
   }
 }

@@ -49,6 +49,8 @@ let DonService = class DonService {
     async restore(id) {
         return await this.donRepository.restore(id);
     }
+    async nouveauDon() {
+    }
 };
 DonService = __decorate([
     (0, common_1.Injectable)(),

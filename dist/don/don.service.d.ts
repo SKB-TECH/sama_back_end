@@ -9,4 +9,5 @@ export declare class DonService {
     deleteOne(id: string): Promise<import("typeorm").DeleteResult>;
     deletePartielle(id: string): Promise<import("typeorm").UpdateResult>;
     restore(id: string): Promise<import("typeorm").UpdateResult>;
+    nouveauDon(): Promise<void>;
 }
