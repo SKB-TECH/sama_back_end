@@ -15,9 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DonController = void 0;
 const common_1 = require("@nestjs/common");
 const don_service_1 = require("./don.service");
+const nouveauDon_1 = require("./DTO/nouveauDon");
+const modifDon_1 = require("./DTO/modifDon");
 let DonController = class DonController {
     constructor(donService) {
         this.donService = donService;
+    }
+    async nouveau(don) {
+        return await this.donService.nouveauDon(don);
     }
     async getOneDon(id) {
         return await this.donService.getOneDon(id);
@@ -34,7 +39,17 @@ let DonController = class DonController {
     async restore(id) {
         return await this.donService.restore(id);
     }
+    async updateCv(modifier, id) {
+        return await this.donService.modificationDon(id, modifier);
+    }
 };
+__decorate([
+    (0, common_1.Post)('nouveau'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [nouveauDon_1.NouveauDon]),
+    __metadata("design:returntype", Promise)
+], DonController.prototype, "nouveau", null);
 __decorate([
     (0, common_1.Get)('oneDon/:id'),
     __param(0, (0, common_1.Param)('id')),
@@ -69,6 +84,14 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], DonController.prototype, "restore", null);
+__decorate([
+    (0, common_1.Patch)('update/:id'),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [modifDon_1.ModifDon, String]),
+    __metadata("design:returntype", Promise)
+], DonController.prototype, "updateCv", null);
 DonController = __decorate([
     (0, common_1.Controller)('don'),
     __metadata("design:paramtypes", [don_service_1.DonService])

@@ -49,7 +49,15 @@ let DonService = class DonService {
     async restore(id) {
         return await this.donRepository.restore(id);
     }
-    async nouveauDon() {
+    async nouveauDon(nouveau) {
+        return await this.donRepository.save(nouveau);
+    }
+    async modificationDon(id, donModif) {
+        const donM = await this.donRepository.preload(Object.assign({ id }, donModif));
+        if (!donM) {
+            throw new common_1.NotFoundException(`Le don correspondant a cet id: ${id} n'existe pas `);
+        }
+        return await this.donRepository.save(donM);
     }
 };
 DonService = __decorate([

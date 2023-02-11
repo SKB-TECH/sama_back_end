@@ -25,7 +25,7 @@ export class donEntity extends TimeStamps {
   @Column({ length: 255 })
   designation: string;
   @Column()
-  montant?: number;
+  montant: number;
   @Column({ length: 55 })
-  devise?: string;
+  devise: string;
 }

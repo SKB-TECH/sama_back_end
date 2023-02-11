@@ -1,6 +1,4 @@
-import { TimeStamps } from '../../Times/timestamp.entity';
-export declare class donEntity extends TimeStamps {
-    id: string;
+export declare class ModifDon {
     donateur: string;
     type: string;
     categorie: string;

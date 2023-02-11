@@ -1,5 +1,7 @@
 import { donEntity } from './entities/don.entity';
 import { Repository } from 'typeorm';
+import { NouveauDon } from './DTO/nouveauDon';
+import { ModifDon } from './DTO/modifDon';
 export declare class DonService {
     private donRepository;
     constructor(donRepository: Repository<donEntity>);
@@ -9,5 +11,6 @@ export declare class DonService {
     deleteOne(id: string): Promise<import("typeorm").DeleteResult>;
     deletePartielle(id: string): Promise<import("typeorm").UpdateResult>;
     restore(id: string): Promise<import("typeorm").UpdateResult>;
-    nouveauDon(): Promise<void>;
+    nouveauDon(nouveau: NouveauDon): Promise<donEntity>;
+    modificationDon(id: string, donModif: ModifDon): Promise<donEntity>;
 }
