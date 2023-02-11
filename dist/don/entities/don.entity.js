@@ -12,8 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.donEntity = void 0;
 const timestamp_entity_1 = require("../../Times/timestamp.entity");
 const typeorm_1 = require("typeorm");
-class donEntity extends timestamp_entity_1.TimeStamps {
-}
+let donEntity = class donEntity extends timestamp_entity_1.TimeStamps {
+};
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
     __metadata("design:type", String)
@@ -34,5 +34,8 @@ __decorate([
     (0, typeorm_1.Column)({ length: 55 }),
     __metadata("design:type", String)
 ], donEntity.prototype, "devise", void 0);
+donEntity = __decorate([
+    (0, typeorm_1.Entity)('don')
+], donEntity);
 exports.donEntity = donEntity;
 //# sourceMappingURL=don.entity.js.map

@@ -22,6 +22,9 @@ let DonController = class DonController {
     async getOneDon(id) {
         return await this.donService.getOneDon(id);
     }
+    async getAllDon() {
+        return await this.donService.getAll();
+    }
 };
 __decorate([
     (0, common_1.Get)('oneDon/:id'),
@@ -30,6 +33,12 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], DonController.prototype, "getOneDon", null);
+__decorate([
+    (0, common_1.Get)('/all'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], DonController.prototype, "getAllDon", null);
 DonController = __decorate([
     (0, common_1.Controller)('don'),
     __metadata("design:paramtypes", [don_service_1.DonService])

@@ -22,4 +22,11 @@ export class DonService {
     }
     return don;
   }
+  async getAll() {
+    const don = await this.donRepository.find();
+    if (!don) {
+      throw new NotFoundException("Vous n'avez aucun don");
+    }
+    return don;
+  }
 }

@@ -1,6 +1,7 @@
 import { TimeStamps } from '../../Times/timestamp.entity';
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity('don')
 export class donEntity extends TimeStamps {
   @PrimaryGeneratedColumn('uuid')
   id: string;

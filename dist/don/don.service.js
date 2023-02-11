@@ -30,6 +30,13 @@ let DonService = class DonService {
         }
         return don;
     }
+    async getAll() {
+        const don = await this.donRepository.find();
+        if (!don) {
+            throw new common_1.NotFoundException("Vous n'avez aucun don");
+        }
+        return don;
+    }
 };
 DonService = __decorate([
     (0, common_1.Injectable)(),

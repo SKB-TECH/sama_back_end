@@ -9,4 +9,8 @@ export class DonController {
   async getOneDon(@Param('id') id: string): Promise<donEntity[]> {
     return await this.donService.getOneDon(id);
   }
+  @Get('/all')
+  async getAllDon(): Promise<donEntity[]> {
+    return await this.donService.getAll();
+  }
 }
