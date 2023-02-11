@@ -37,6 +37,12 @@ let DonService = class DonService {
         }
         return don;
     }
+    async deleteOne(id) {
+        const don = await this.donRepository.findBy({
+            id: id,
+        });
+        return await this.donRepository.delete(id);
+    }
 };
 DonService = __decorate([
     (0, common_1.Injectable)(),

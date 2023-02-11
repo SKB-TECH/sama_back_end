@@ -5,4 +5,5 @@ export declare class DonService {
     constructor(donRepository: Repository<donEntity>);
     getOneDon(id: string): Promise<donEntity[]>;
     getAll(): Promise<donEntity[]>;
+    deleteOne(id: string): Promise<import("typeorm").DeleteResult>;
 }

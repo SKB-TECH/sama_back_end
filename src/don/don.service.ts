@@ -29,4 +29,19 @@ export class DonService {
     }
     return don;
   }
+
+  //suppression defimitive
+  async deleteOne(id: string) {
+    const don = await this.donRepository.findBy({
+      id: id,
+    });
+    return await this.donRepository.delete(id);
+  }
+  //suppression partielle
+
+  // async deleteDefinitive(id: string) {
+  //   const don= await this.donRepository.findBy({
+  //     id:id,
+  //   })
+  // }
 }
