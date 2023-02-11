@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.donEntity = void 0;
 const timestamp_entity_1 = require("../../Times/timestamp.entity");
 const typeorm_1 = require("typeorm");
+const donateur_type_1 = require("../don_enum/donateur_type");
 let donEntity = class donEntity extends timestamp_entity_1.TimeStamps {
 };
 __decorate([
@@ -19,9 +20,27 @@ __decorate([
     __metadata("design:type", String)
 ], donEntity.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ length: 255 }),
+    (0, typeorm_1.Column)({
+        length: 255,
+    }),
+    __metadata("design:type", String)
+], donEntity.prototype, "donateur", void 0);
+__decorate([
+    (0, typeorm_1.Column)({
+        type: 'enum',
+        enum: donateur_type_1.type_donateur,
+        default: donateur_type_1.type_donateur.INDIVIDUEL,
+    }),
     __metadata("design:type", String)
 ], donEntity.prototype, "type", void 0);
+__decorate([
+    (0, typeorm_1.Column)({
+        type: 'enum',
+        enum: donateur_type_1.categirie_don,
+        default: donateur_type_1.categirie_don.ESPECE,
+    }),
+    __metadata("design:type", String)
+], donEntity.prototype, "categorie", void 0);
 __decorate([
     (0, typeorm_1.Column)({ length: 255 }),
     __metadata("design:type", String)

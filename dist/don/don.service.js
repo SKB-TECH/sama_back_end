@@ -41,14 +41,13 @@ let DonService = class DonService {
         return don;
     }
     async deleteOne(id) {
-        const don = this.find(id);
         return await this.donRepository.delete(id);
     }
     async deletePartielle(id) {
         return await this.donRepository.softDelete(id);
     }
     async restore(id) {
-        const don = this.find(id);
+        return await this.donRepository.restore(id);
     }
 };
 DonService = __decorate([

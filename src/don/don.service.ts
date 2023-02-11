@@ -33,18 +33,15 @@ export class DonService {
     }
     return don;
   }
-
   //suppression defimitive
   async deleteOne(id: string) {
-    const don = this.find(id);
     return await this.donRepository.delete(id);
   }
   //suppression partielle
   async deletePartielle(id: string) {
     return await this.donRepository.softDelete(id);
   }
-
   async restore(id: string) {
-    const don=this.find(id);
+    return await this.donRepository.restore(id)
   }
 }

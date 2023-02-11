@@ -8,5 +8,5 @@ export declare class DonService {
     getAll(): Promise<donEntity[]>;
     deleteOne(id: string): Promise<import("typeorm").DeleteResult>;
     deletePartielle(id: string): Promise<import("typeorm").UpdateResult>;
-    restore(id: string): Promise<void>;
+    restore(id: string): Promise<import("typeorm").UpdateResult>;
 }

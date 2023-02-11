@@ -23,4 +23,9 @@ export class DonController {
   async deleteDefinitive(@Param('id') id: string) {
     return await this.donService.deletePartielle(id);
   }
+  //restore
+  @Get('restore/:id')
+  async restore(@Param('id') id: string) {
+    return await this.donService.restore(id);
+  }
 }
