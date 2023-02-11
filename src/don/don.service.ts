@@ -9,9 +9,8 @@ export class DonService {
     @InjectRepository(donEntity)
     private donRepository: Repository<donEntity>,
   ) {}
-
-  //findoneDon
-  async getOneDon(id: string) {
+  //find
+  async find(id: string) {
     const don = await this.donRepository.findBy({
       id: id,
     });
@@ -21,6 +20,11 @@ export class DonService {
       );
     }
     return don;
+  }
+
+  //findoneDon
+  async getOneDon(id: string) {
+    return this.find(id);
   }
   async getAll() {
     const don = await this.donRepository.find();
@@ -32,16 +36,15 @@ export class DonService {
 
   //suppression defimitive
   async deleteOne(id: string) {
-    const don = await this.donRepository.findBy({
-      id: id,
-    });
+    const don = this.find(id);
     return await this.donRepository.delete(id);
   }
   //suppression partielle
+  async deletePartielle(id: string) {
+    return await this.donRepository.softDelete(id);
+  }
 
-  // async deleteDefinitive(id: string) {
-  //   const don= await this.donRepository.findBy({
-  //     id:id,
-  //   })
-  // }
+  async restore(id: string) {
+    const don=this.find(id);
+  }
 }

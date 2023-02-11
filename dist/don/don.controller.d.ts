@@ -5,4 +5,6 @@ export declare class DonController {
     constructor(donService: DonService);
     getOneDon(id: string): Promise<donEntity[]>;
     getAllDon(): Promise<donEntity[]>;
+    deleteOne(id: string): Promise<import("typeorm").DeleteResult>;
+    deleteDefinitive(id: string): Promise<import("typeorm").UpdateResult>;
 }

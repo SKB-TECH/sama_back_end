@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Delete, Get, Param } from '@nestjs/common';
 import { DonService } from './don.service';
 import { donEntity } from './entities/don.entity';
 
@@ -12,5 +12,15 @@ export class DonController {
   @Get('/all')
   async getAllDon(): Promise<donEntity[]> {
     return await this.donService.getAll();
+  }
+  //deletePartielle
+  @Delete('deleteOne/:id')
+  async deleteOne(@Param('id') id: string) {
+    return await this.donService.deleteOne(id);
+  }
+  //deleteDefinitive
+  @Delete('deletePartielle/:id')
+  async deleteDefinitive(@Param('id') id: string) {
+    return await this.donService.deletePartielle(id);
   }
 }

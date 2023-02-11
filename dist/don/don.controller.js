@@ -25,6 +25,12 @@ let DonController = class DonController {
     async getAllDon() {
         return await this.donService.getAll();
     }
+    async deleteOne(id) {
+        return await this.donService.deleteOne(id);
+    }
+    async deleteDefinitive(id) {
+        return await this.donService.deletePartielle(id);
+    }
 };
 __decorate([
     (0, common_1.Get)('oneDon/:id'),
@@ -39,6 +45,20 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], DonController.prototype, "getAllDon", null);
+__decorate([
+    (0, common_1.Delete)('deleteOne/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], DonController.prototype, "deleteOne", null);
+__decorate([
+    (0, common_1.Delete)('deletePartielle/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], DonController.prototype, "deleteDefinitive", null);
 DonController = __decorate([
     (0, common_1.Controller)('don'),
     __metadata("design:paramtypes", [don_service_1.DonService])

@@ -21,7 +21,7 @@ let DonService = class DonService {
     constructor(donRepository) {
         this.donRepository = donRepository;
     }
-    async getOneDon(id) {
+    async find(id) {
         const don = await this.donRepository.findBy({
             id: id,
         });
@@ -29,6 +29,9 @@ let DonService = class DonService {
             throw new common_1.NotFoundException(`Le don correspondant a cet id: ${id} n'existe pas `);
         }
         return don;
+    }
+    async getOneDon(id) {
+        return this.find(id);
     }
     async getAll() {
         const don = await this.donRepository.find();
@@ -38,10 +41,14 @@ let DonService = class DonService {
         return don;
     }
     async deleteOne(id) {
-        const don = await this.donRepository.findBy({
-            id: id,
-        });
+        const don = this.find(id);
         return await this.donRepository.delete(id);
+    }
+    async deletePartielle(id) {
+        return await this.donRepository.softDelete(id);
+    }
+    async restore(id) {
+        const don = this.find(id);
     }
 };
 DonService = __decorate([
