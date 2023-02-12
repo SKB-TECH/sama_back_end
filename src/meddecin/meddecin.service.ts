@@ -2,6 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { MeddecinEntity } from './entities/meddecin.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { NouveauMeddecin } from './DTO/nouveauMeddecin';
+import { MeddecinModif } from './DTO/meddecinModif';
 
 @Injectable()
 export class MeddecinService {
@@ -44,15 +46,18 @@ export class MeddecinService {
     return await this.meddecinRepository.restore(id);
   }
   //nouveau don
-  async nouveauDon(nouveau: NouveauDon): Promise<MeddecinEntity> {
+  async nouveauDon(nouveau: NouveauMeddecin): Promise<MeddecinEntity> {
     return await this.meddecinRepository.save(nouveau);
   }
 
   // modification
-  async modificationDon(id: string, donModif: ModifDon): Promise<MeddecinEntity> {
+  async modificationDon(
+    id: string,
+    medModif: MeddecinModif,
+  ): Promise<MeddecinEntity> {
     const medM = await this.meddecinRepository.preload({
       id,
-      ...donModif,
+      ...medModif,
     });
     if (!medM) {
       throw new NotFoundException(
