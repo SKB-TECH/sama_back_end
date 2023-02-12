@@ -1,5 +1,4 @@
-export declare class RdvEntity {
-    id: string;
+export declare class RdvDto {
     noms: string;
     telephone: string;
     email: string;

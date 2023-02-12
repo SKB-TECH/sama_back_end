@@ -9,52 +9,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RdvEntity = void 0;
-const typeorm_1 = require("typeorm");
-let RdvEntity = class RdvEntity {
-};
+exports.ModifRdv = void 0;
+const class_validator_1 = require("class-validator");
+class ModifRdv {
+}
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], RdvEntity.prototype, "id", void 0);
+], ModifRdv.prototype, "noms", void 0);
 __decorate([
-    (0, typeorm_1.Column)({
-        length: 255,
-    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], RdvEntity.prototype, "noms", void 0);
+], ModifRdv.prototype, "telephone", void 0);
 __decorate([
-    (0, typeorm_1.Column)({
-        length: 25,
-    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
-], RdvEntity.prototype, "telephone", void 0);
+], ModifRdv.prototype, "email", void 0);
 __decorate([
-    (0, typeorm_1.Column)({
-        length: 255,
-    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], RdvEntity.prototype, "email", void 0);
+], ModifRdv.prototype, "object", void 0);
 __decorate([
-    (0, typeorm_1.Column)({
-        length: 255,
-    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsDate)(),
     __metadata("design:type", String)
-], RdvEntity.prototype, "object", void 0);
+], ModifRdv.prototype, "dateRdv", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], RdvEntity.prototype, "dateRdv", void 0);
+], ModifRdv.prototype, "heureRdv", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], RdvEntity.prototype, "heureRdv", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], RdvEntity.prototype, "commentaire", void 0);
-RdvEntity = __decorate([
-    (0, typeorm_1.Entity)('rdv')
-], RdvEntity);
-exports.RdvEntity = RdvEntity;
-//# sourceMappingURL=rdd.entities.js.map
+], ModifRdv.prototype, "commentaire", void 0);
+exports.ModifRdv = ModifRdv;
+//# sourceMappingURL=modifRdv.js.map

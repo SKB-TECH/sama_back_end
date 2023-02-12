@@ -27,6 +27,4 @@ export class RdvEntity {
   heureRdv: string;
   @Column()
   commentaire: string;
-  @Column()
-  idmeddecin: string;
 }
