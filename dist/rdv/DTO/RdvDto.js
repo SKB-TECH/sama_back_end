@@ -47,7 +47,6 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)({
         message: 'le champ date ne doit pas etre vide',
     }),
-    (0, class_validator_1.IsDate)(),
     __metadata("design:type", String)
 ], RdvDto.prototype, "dateRdv", void 0);
 __decorate([

@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { RdvEntity } from './entity/rdd.entities';
+import { RdvEntity } from './entities/rdv.entity';
 import { RdvDto } from './DTO/RdvDto';
 import { ModifRdv } from './DTO/modifRdv';
 
@@ -29,11 +29,11 @@ export class RdvService {
     return this.find(id);
   }
   async getAll() {
-    const don = await this.rdvRepository.find();
-    if (!don) {
+    const rdv = await this.rdvRepository.find();
+    if (!rdv) {
       throw new NotFoundException("Vous n'avez aucun rdv");
     }
-    return don;
+    return rdv;
   }
   //suppression defimitive
   async deleteOne(id: string) {

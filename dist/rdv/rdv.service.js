@@ -16,7 +16,7 @@ exports.RdvService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
-const rdd_entities_1 = require("./entity/rdd.entities");
+const rdv_entity_1 = require("./entities/rdv.entity");
 let RdvService = class RdvService {
     constructor(rdvRepository) {
         this.rdvRepository = rdvRepository;
@@ -34,11 +34,11 @@ let RdvService = class RdvService {
         return this.find(id);
     }
     async getAll() {
-        const don = await this.rdvRepository.find();
-        if (!don) {
+        const rdv = await this.rdvRepository.find();
+        if (!rdv) {
             throw new common_1.NotFoundException("Vous n'avez aucun rdv");
         }
-        return don;
+        return rdv;
     }
     async deleteOne(id) {
         return await this.rdvRepository.delete(id);
@@ -62,7 +62,7 @@ let RdvService = class RdvService {
 };
 RdvService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(rdd_entities_1.RdvEntity)),
+    __param(0, (0, typeorm_1.InjectRepository)(rdv_entity_1.RdvEntity)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], RdvService);
 exports.RdvService = RdvService;

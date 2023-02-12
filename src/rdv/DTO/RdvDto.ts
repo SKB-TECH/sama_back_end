@@ -1,10 +1,11 @@
 import {
-  IsDate,
+  IsDate, IsDateString,
   IsEmail,
   IsNotEmpty,
   IsOptional,
-  IsString,
-} from 'class-validator';
+  IsString
+} from "class-validator";
+import { Type } from "class-transformer";
 export class RdvDto {
   @IsString()
   @IsNotEmpty({
@@ -34,7 +35,6 @@ export class RdvDto {
   @IsNotEmpty({
     message: 'le champ date ne doit pas etre vide',
   })
-  @IsDate()
   dateRdv: string;
   @IsString()
   @IsNotEmpty({

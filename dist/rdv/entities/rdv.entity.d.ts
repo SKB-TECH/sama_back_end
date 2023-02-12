@@ -1,4 +1,5 @@
-export declare class RdvEntity {
+import { TimeStamps } from '../../Times/timestamp.entity';
+export declare class RdvEntity extends TimeStamps {
     id: string;
     noms: string;
     telephone: string;

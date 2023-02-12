@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { RdvEntity } from './entity/rdd.entities';
+import { RdvEntity } from './entities/rdv.entity';
 import { RdvDto } from './DTO/RdvDto';
 import { ModifRdv } from './DTO/modifRdv';
 export declare class RdvService {

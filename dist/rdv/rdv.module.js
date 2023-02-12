@@ -11,12 +11,12 @@ const common_1 = require("@nestjs/common");
 const rdv_controller_1 = require("./rdv.controller");
 const rdv_service_1 = require("./rdv.service");
 const typeorm_1 = require("@nestjs/typeorm");
-const rdd_entities_1 = require("./entity/rdd.entities");
+const rdv_entity_1 = require("./entities/rdv.entity");
 let RdvModule = class RdvModule {
 };
 RdvModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([rdd_entities_1.RdvEntity])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([rdv_entity_1.RdvEntity])],
         controllers: [rdv_controller_1.RdvController],
         providers: [rdv_service_1.RdvService],
     })

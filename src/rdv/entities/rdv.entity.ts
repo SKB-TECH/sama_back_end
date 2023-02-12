@@ -1,7 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { TimeStamps } from '../../Times/timestamp.entity';
 
 @Entity('rdv')
-export class RdvEntity {
+export class RdvEntity extends TimeStamps {
   @PrimaryGeneratedColumn('uuid')
   id: string;
   @Column({
