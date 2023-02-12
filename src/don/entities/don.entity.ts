@@ -15,6 +15,10 @@ export class donEntity extends TimeStamps {
     enum: type_donateur,
     default: type_donateur.INDIVIDUEL,
   })
+  @Column()
+  adresse: string;
+  @Column()
+  telephone: string;
   type: string;
   @Column({
     type: 'enum',

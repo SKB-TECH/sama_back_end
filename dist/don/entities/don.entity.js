@@ -31,8 +31,13 @@ __decorate([
         enum: donateur_type_1.type_donateur,
         default: donateur_type_1.type_donateur.INDIVIDUEL,
     }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], donEntity.prototype, "type", void 0);
+], donEntity.prototype, "adresse", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], donEntity.prototype, "telephone", void 0);
 __decorate([
     (0, typeorm_1.Column)({
         type: 'enum',

@@ -1,5 +1,7 @@
 export declare class ModifDon {
     donateur: string;
+    adresse: string;
+    telephone: string;
     type: string;
     categorie: string;
     designation: string;

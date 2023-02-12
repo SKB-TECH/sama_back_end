@@ -6,9 +6,20 @@ export class NouveauDon {
   })
   @IsString()
   donateur: string;
+
+  @IsNotEmpty({
+    message: 'le champ adresse ne doit pas etre vide',
+  })
+  @IsString()
+  adresse: string;
   @IsNotEmpty({
     message: 'le champ type ne doit pas etre vide',
   })
+  @IsNotEmpty({
+    message: 'le champ telephone ne doit pas etre vide',
+  })
+  @IsString()
+  telephone: string;
   @IsString()
   type: string;
 

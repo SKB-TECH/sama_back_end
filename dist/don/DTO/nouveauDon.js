@@ -22,8 +22,22 @@ __decorate([
 ], NouveauDon.prototype, "donateur", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)({
+        message: 'le champ adresse ne doit pas etre vide',
+    }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], NouveauDon.prototype, "adresse", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)({
         message: 'le champ type ne doit pas etre vide',
     }),
+    (0, class_validator_1.IsNotEmpty)({
+        message: 'le champ telephone ne doit pas etre vide',
+    }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], NouveauDon.prototype, "telephone", void 0);
+__decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], NouveauDon.prototype, "type", void 0);

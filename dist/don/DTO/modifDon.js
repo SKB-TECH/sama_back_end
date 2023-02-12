@@ -22,45 +22,36 @@ __decorate([
     __metadata("design:type", String)
 ], ModifDon.prototype, "donateur", void 0);
 __decorate([
-    (0, class_validator_1.IsNotEmpty)({
-        message: 'le champ type ne doit pas etre vide',
-    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ModifDon.prototype, "adresse", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ModifDon.prototype, "telephone", void 0);
+__decorate([
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], ModifDon.prototype, "type", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsNotEmpty)({
-        message: 'le champ categorie ne doit pas etre vide',
-    }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], ModifDon.prototype, "categorie", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsNotEmpty)({
-        message: 'le champ designation ne doit pas etre vide',
-    }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], ModifDon.prototype, "designation", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsNotEmpty)({
-        message: 'le champ montant ne doit pas etre vide',
-    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], ModifDon.prototype, "montant", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsNotEmpty)({
-        message: 'le champ devise ne doit pas etre vide',
-    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
