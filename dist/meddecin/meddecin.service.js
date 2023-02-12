@@ -30,7 +30,7 @@ let MeddecinService = class MeddecinService {
         }
         return med;
     }
-    async getOneDon(id) {
+    async getOneMed(id) {
         return this.find(id);
     }
     async getAll() {
@@ -52,7 +52,7 @@ let MeddecinService = class MeddecinService {
     async nouveauDon(nouveau) {
         return await this.meddecinRepository.save(nouveau);
     }
-    async modificationDon(id, medModif) {
+    async modificationMed(id, medModif) {
         const medM = await this.meddecinRepository.preload(Object.assign({ id }, medModif));
         if (!medM) {
             throw new common_1.NotFoundException(`Le meddecin correspondant a cet id: ${id} n'existe pas `);

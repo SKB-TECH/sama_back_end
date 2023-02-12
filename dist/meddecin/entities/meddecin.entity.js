@@ -12,7 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MeddecinEntity = void 0;
 const typeorm_1 = require("typeorm");
 const meddecin_enum_1 = require("../meddecin_enum/meddecin_enum");
-let MeddecinEntity = class MeddecinEntity {
+const timestamp_entity_1 = require("../../Times/timestamp.entity");
+let MeddecinEntity = class MeddecinEntity extends timestamp_entity_1.TimeStamps {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),

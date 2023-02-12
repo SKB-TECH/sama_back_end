@@ -1,8 +1,9 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { Meddecin_enum } from '../meddecin_enum/meddecin_enum';
+import { TimeStamps } from '../../Times/timestamp.entity';
 
 @Entity('meddecin')
-export class MeddecinEntity {
+export class MeddecinEntity extends TimeStamps {
   @PrimaryGeneratedColumn('uuid')
   id: string;
   @Column({

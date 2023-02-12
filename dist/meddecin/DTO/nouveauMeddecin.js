@@ -41,7 +41,7 @@ __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
-], NouveauMeddecin.prototype, "eamil", void 0);
+], NouveauMeddecin.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)({
         message: 'le champ specialite ne doit pas etre vide',
@@ -50,11 +50,7 @@ __decorate([
     __metadata("design:type", String)
 ], NouveauMeddecin.prototype, "specialite", void 0);
 __decorate([
-    (0, class_validator_1.IsNotEmpty)({
-        message: 'le champ email ne doit pas etre vide',
-    }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsEmail)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], NouveauMeddecin.prototype, "photo", void 0);

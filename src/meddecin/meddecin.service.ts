@@ -24,7 +24,7 @@ export class MeddecinService {
   }
 
   //findoneDon
-  async getOneDon(id: string) {
+  async getOneMed(id: string) {
     return this.find(id);
   }
   async getAll() {
@@ -51,7 +51,7 @@ export class MeddecinService {
   }
 
   // modification
-  async modificationDon(
+  async modificationMed(
     id: string,
     medModif: MeddecinModif,
   ): Promise<MeddecinEntity> {
