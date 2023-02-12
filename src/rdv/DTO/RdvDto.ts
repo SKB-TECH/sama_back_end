@@ -1,5 +1,10 @@
-import { IsDate, IsEmail, IsNotEmpty, IsOptional, IsString } from "class-validator";
-
+import {
+  IsDate,
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 export class RdvDto {
   @IsString()
   @IsNotEmpty({
