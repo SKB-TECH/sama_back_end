@@ -17,6 +17,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DonModule } from './don/don.module';
 import { MeddecinModule } from './meddecin/meddecin.module';
+import { RdvModule } from './rdv/rdv.module';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -37,6 +38,7 @@ dotenv.config();
     }),
     DonModule,
     MeddecinModule,
+    RdvModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -14,6 +14,7 @@ const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
 const don_module_1 = require("./don/don.module");
 const meddecin_module_1 = require("./meddecin/meddecin.module");
+const rdv_module_1 = require("./rdv/rdv.module");
 const dotenv = require("dotenv");
 dotenv.config();
 let AppModule = class AppModule {
@@ -36,6 +37,7 @@ AppModule = __decorate([
             }),
             don_module_1.DonModule,
             meddecin_module_1.MeddecinModule,
+            rdv_module_1.RdvModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
