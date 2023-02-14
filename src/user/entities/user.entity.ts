@@ -1,10 +1,9 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Role } from '../user_enum/role';
-
+import { Role, Status } from '../user_enum/role';
+import { TimeStamps } from '../../Times/timestamp.entity';
 @Entity('user')
-export class UserEntity {
+export class UserEntity extends TimeStamps {
   @PrimaryGeneratedColumn('uuid')
-  @Column()
   id: string;
   @Column({
     length: 55,
@@ -19,8 +18,15 @@ export class UserEntity {
 
   @Column({
     type: 'enum',
-    enum: Role.USER,
+    enum: Role,
     default: Role.USER,
   })
   role: string;
+
+  @Column({
+    type: 'enum',
+    enum: Status,
+    default: Status.ACTIVE,
+  })
+  status: string;
 }
