@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
 import { UserEntity } from './entities/user.entity';
-import { UserDto } from "./DTO/UserDto";
-import { ModifUser } from "./DTO/ModifUser";
+import { UserDto } from './DTO/UserDto';
+import { ModifUser } from './DTO/ModifUser';
 export declare class UserService {
     private userRepository;
     constructor(userRepository: Repository<UserEntity>);
