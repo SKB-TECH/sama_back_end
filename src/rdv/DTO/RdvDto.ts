@@ -1,11 +1,9 @@
 import {
-  IsDate, IsDateString,
   IsEmail,
   IsNotEmpty,
   IsOptional,
-  IsString
-} from "class-validator";
-import { Type } from "class-transformer";
+  IsString,
+} from 'class-validator';
 export class RdvDto {
   @IsString()
   @IsNotEmpty({
@@ -44,4 +42,8 @@ export class RdvDto {
   @IsString()
   @IsOptional()
   commentaire: string;
+
+  @IsString()
+  @IsOptional()
+  status: string;
 }

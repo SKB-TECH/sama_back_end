@@ -1,5 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { TimeStamps } from '../../Times/timestamp.entity';
+import { Rdv_enum } from "../rdv_enum/rdv_enum";
 
 @Entity('rdv')
 export class RdvEntity extends TimeStamps {
@@ -28,4 +29,11 @@ export class RdvEntity extends TimeStamps {
   heureRdv: string;
   @Column()
   commentaire: string;
+
+  @Column({
+    type: 'enum',
+    enum: Rdv_enum,
+    default: Rdv_enum.INVALIDE,
+  })
+  status: string;
 }

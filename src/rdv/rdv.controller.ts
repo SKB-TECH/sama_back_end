@@ -11,14 +11,18 @@ import { RdvService } from './rdv.service';
 import { RdvDto } from './DTO/RdvDto';
 import { RdvEntity } from './entities/rdv.entity';
 import { ModifRdv } from './DTO/modifRdv';
+import { SendMail } from "./DTO/SendMail";
 
 @Controller('rdv')
 export class RdvController {
   constructor(private rdvService: RdvService) {}
 
-  @Post('nouveau/:id')
-  async nouveau(@Body() rdv: RdvDto): Promise<RdvEntity> {
-    return await this.rdvService.nouveauRdv(rdv);
+  @Post('nouveau/:email')
+  async nouveau(
+    @Body() rdv: RdvDto,
+    @Param('med') med:string
+  ): Promise<RdvEntity> {
+    return await this.rdvService.nouveauRdv(rdv,med);
   }
   @Get('oneRdv/:id')
   async getOneDon(@Param('id') id: string): Promise<RdvEntity[]> {

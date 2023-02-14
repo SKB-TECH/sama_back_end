@@ -8,4 +8,5 @@ export declare class RdvEntity extends TimeStamps {
     dateRdv: string;
     heureRdv: string;
     commentaire: string;
+    status: string;
 }

@@ -6,4 +6,5 @@ export declare class ModifRdv {
     dateRdv: string;
     heureRdv: string;
     commentaire: string;
+    status: string;
 }

@@ -27,4 +27,7 @@ export class ModifRdv {
   @IsString()
   @IsOptional()
   commentaire: string;
+  @IsString()
+  @IsOptional()
+  status: string;
 }

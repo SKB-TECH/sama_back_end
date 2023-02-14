@@ -6,4 +6,5 @@ export declare class RdvDto {
     dateRdv: string;
     heureRdv: string;
     commentaire: string;
+    status: string;
 }

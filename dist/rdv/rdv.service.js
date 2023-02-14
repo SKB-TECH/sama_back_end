@@ -17,9 +17,11 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const rdv_entity_1 = require("./entities/rdv.entity");
+const mailer_1 = require("@nestjs-modules/mailer");
 let RdvService = class RdvService {
-    constructor(rdvRepository) {
+    constructor(rdvRepository, mailService) {
         this.rdvRepository = rdvRepository;
+        this.mailService = mailService;
     }
     async find(id) {
         const rdv = await this.rdvRepository.findBy({
@@ -49,8 +51,17 @@ let RdvService = class RdvService {
     async restore(id) {
         return await this.rdvRepository.restore(id);
     }
-    async nouveauRdv(nouveau) {
-        return await this.rdvRepository.save(nouveau);
+    async nouveauRdv(nouveau, med) {
+        const rdv = await this.rdvRepository.save(nouveau);
+        if (rdv) {
+            await this.mailService.sendMail({
+                to: 'shakokinyamba201@gmail.com',
+                from: 'nani.bommidi93@gmail.com',
+                subject: 'Rendez-vous ✔',
+                text: 'Welcome NestJS Email Sending Tutorial',
+            });
+        }
+        return rdv;
     }
     async modificationRdv(id, rdvModif) {
         const rdv = await this.rdvRepository.preload(Object.assign({ id }, rdvModif));
@@ -63,7 +74,8 @@ let RdvService = class RdvService {
 RdvService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(rdv_entity_1.RdvEntity)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        mailer_1.MailerService])
 ], RdvService);
 exports.RdvService = RdvService;
 //# sourceMappingURL=rdv.service.js.map

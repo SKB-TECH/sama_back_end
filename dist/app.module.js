@@ -16,12 +16,23 @@ const don_module_1 = require("./don/don.module");
 const meddecin_module_1 = require("./meddecin/meddecin.module");
 const rdv_module_1 = require("./rdv/rdv.module");
 const dotenv = require("dotenv");
+const mailer_1 = require("@nestjs-modules/mailer");
+const process = require("process");
 dotenv.config();
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            mailer_1.MailerModule.forRoot({
+                transport: {
+                    host: 'smtp.sendgrid.net',
+                    auth: {
+                        user: 'apikey',
+                        pass: process.env.SENDGRID_API_KEY,
+                    },
+                },
+            }),
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
             }),

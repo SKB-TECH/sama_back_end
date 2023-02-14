@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RdvEntity = void 0;
 const typeorm_1 = require("typeorm");
 const timestamp_entity_1 = require("../../Times/timestamp.entity");
+const rdv_enum_1 = require("../rdv_enum/rdv_enum");
 let RdvEntity = class RdvEntity extends timestamp_entity_1.TimeStamps {
 };
 __decorate([
@@ -54,6 +55,14 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], RdvEntity.prototype, "commentaire", void 0);
+__decorate([
+    (0, typeorm_1.Column)({
+        type: 'enum',
+        enum: rdv_enum_1.Rdv_enum,
+        default: rdv_enum_1.Rdv_enum.INVALIDE,
+    }),
+    __metadata("design:type", String)
+], RdvEntity.prototype, "status", void 0);
 RdvEntity = __decorate([
     (0, typeorm_1.Entity)('rdv')
 ], RdvEntity);

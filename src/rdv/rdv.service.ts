@@ -4,12 +4,13 @@ import { Repository } from 'typeorm';
 import { RdvEntity } from './entities/rdv.entity';
 import { RdvDto } from './DTO/RdvDto';
 import { ModifRdv } from './DTO/modifRdv';
-
+import { MailerService } from '@nestjs-modules/mailer';
 @Injectable()
 export class RdvService {
   constructor(
     @InjectRepository(RdvEntity)
     private rdvRepository: Repository<RdvEntity>,
+    private mailService: MailerService,
   ) {}
   //find
   async find(id: string) {
@@ -47,8 +48,17 @@ export class RdvService {
     return await this.rdvRepository.restore(id);
   }
   //nouveau don
-  async nouveauRdv(nouveau: RdvDto): Promise<RdvEntity> {
-    return await this.rdvRepository.save(nouveau);
+  async nouveauRdv(nouveau: RdvDto, med: string): Promise<RdvEntity> {
+    const rdv = await this.rdvRepository.save(nouveau);
+    if (rdv) {
+      await this.mailService.sendMail({
+        to: 'shakokinyamba201@gmail.com',
+        from: 'nani.bommidi93@gmail.com',
+        subject: 'Rendez-vous ✔',
+        text: 'Welcome NestJS Email Sending Tutorial',
+      });
+    }
+    return rdv;
   }
 
   // modification

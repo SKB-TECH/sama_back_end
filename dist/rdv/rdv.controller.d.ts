@@ -5,7 +5,7 @@ import { ModifRdv } from './DTO/modifRdv';
 export declare class RdvController {
     private rdvService;
     constructor(rdvService: RdvService);
-    nouveau(rdv: RdvDto): Promise<RdvEntity>;
+    nouveau(rdv: RdvDto, med: string): Promise<RdvEntity>;
     getOneDon(id: string): Promise<RdvEntity[]>;
     getAllDon(): Promise<RdvEntity[]>;
     deleteOne(id: string): Promise<import("typeorm").DeleteResult>;

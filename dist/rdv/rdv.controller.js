@@ -21,8 +21,8 @@ let RdvController = class RdvController {
     constructor(rdvService) {
         this.rdvService = rdvService;
     }
-    async nouveau(rdv) {
-        return await this.rdvService.nouveauRdv(rdv);
+    async nouveau(rdv, med) {
+        return await this.rdvService.nouveauRdv(rdv, med);
     }
     async getOneDon(id) {
         return await this.rdvService.getOneDon(id);
@@ -44,10 +44,11 @@ let RdvController = class RdvController {
     }
 };
 __decorate([
-    (0, common_1.Post)('nouveau/:id'),
+    (0, common_1.Post)('nouveau/:email'),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Param)('med')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [RdvDto_1.RdvDto]),
+    __metadata("design:paramtypes", [RdvDto_1.RdvDto, String]),
     __metadata("design:returntype", Promise)
 ], RdvController.prototype, "nouveau", null);
 __decorate([

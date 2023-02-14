@@ -61,5 +61,10 @@ __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], RdvDto.prototype, "commentaire", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], RdvDto.prototype, "status", void 0);
 exports.RdvDto = RdvDto;
 //# sourceMappingURL=RdvDto.js.map
