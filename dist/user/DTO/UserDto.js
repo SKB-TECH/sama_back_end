@@ -31,6 +31,9 @@ __decorate([
 ], UserDto.prototype, "password", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)({
+        message: 'le champ salt ne doit pas etre vide !',
+    }),
+    (0, class_validator_1.IsNotEmpty)({
         message: 'le champ email ne doit pas etre vide !',
     }),
     (0, class_validator_1.IsString)(),
@@ -38,6 +41,9 @@ __decorate([
     __metadata("design:type", String)
 ], UserDto.prototype, "email", void 0);
 __decorate([
+    (0, class_validator_1.IsNotEmpty)({
+        message: 'le champ salt ne doit pas etre vide !',
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)

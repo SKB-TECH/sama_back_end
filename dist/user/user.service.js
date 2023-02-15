@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
 const user_entity_1 = require("./entities/user.entity");
 const typeorm_2 = require("@nestjs/typeorm");
+const bcrypt = require("bcrypt");
 let UserService = class UserService {
     constructor(userRepository) {
         this.userRepository = userRepository;
@@ -49,9 +50,22 @@ let UserService = class UserService {
     async restore(id) {
         return await this.userRepository.restore(id);
     }
-    async nouveauRdv(nouveau) {
-        const user = await this.userRepository.save(nouveau);
-        return user;
+    async nouveauRdv(users) {
+        const usert = await this.userRepository.create(Object.assign({}, users));
+        usert.salt = await bcrypt.genSalt();
+        usert.password = await bcrypt.hash(usert.password, usert.salt);
+        try {
+            await this.userRepository.save(usert);
+        }
+        catch (e) {
+            throw new common_1.ConflictException('username ou password doivent etre unique');
+        }
+        return {
+            id: usert.id,
+            username: usert.username,
+            email: usert.email,
+            role: usert.role
+        };
     }
     async modificationRdv(id, userModif) {
         const user = await this.userRepository.preload(Object.assign({ id }, userModif));
@@ -59,6 +73,9 @@ let UserService = class UserService {
             throw new common_1.NotFoundException(`Le user correspondant a cet id: ${id} n'existe pas `);
         }
         return await this.userRepository.save(user);
+    }
+    async login() {
+        return null;
     }
 };
 UserService = __decorate([

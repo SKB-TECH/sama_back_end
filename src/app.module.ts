@@ -21,7 +21,6 @@ import { RdvModule } from './rdv/rdv.module';
 import * as dotenv from 'dotenv';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { UserModule } from './user/user.module';
-import * as process from "process";
 
 dotenv.config();
 @Module({
@@ -46,6 +45,8 @@ dotenv.config();
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       entities: ['dist/**/*.entities{.ts,.js}'],
+      migrations: ['dist/migrations/*.{ts,js}'],
+      migrationsTableName: 'typeorm_migrations',
       autoLoadEntities: true,
       synchronize: true,
     }),

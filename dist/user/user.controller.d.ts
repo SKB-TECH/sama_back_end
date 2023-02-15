@@ -5,7 +5,7 @@ import { UserService } from './user.service';
 export declare class UserController {
     private userService;
     constructor(userService: UserService);
-    nouveau(user: UserDto): Promise<UserEntity>;
+    nouveau(user: UserDto): Promise<Partial<UserEntity>>;
     getOneDon(id: string): Promise<UserEntity[]>;
     getAllDon(): Promise<UserEntity[]>;
     deleteOne(id: string): Promise<import("typeorm").DeleteResult>;

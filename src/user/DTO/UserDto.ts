@@ -22,14 +22,18 @@ export class UserDto {
   @MaxLength(16)
   @MinLength(8)
   password: string;
-
+  @IsNotEmpty({
+    message: 'le champ salt ne doit pas etre vide !',
+  })
   @IsNotEmpty({
     message: 'le champ email ne doit pas etre vide !',
   })
   @IsString()
   @IsEmail()
   email: string;
-
+  @IsNotEmpty({
+    message: 'le champ salt ne doit pas etre vide !',
+  })
   @IsOptional()
   @IsString()
   role: string;

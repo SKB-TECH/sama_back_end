@@ -5,5 +5,6 @@ export declare class UserEntity extends TimeStamps {
     password: string;
     email: string;
     role: string;
+    salt: string;
     status: string;
 }

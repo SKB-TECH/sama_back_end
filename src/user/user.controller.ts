@@ -16,12 +16,10 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Post('nouveau/')
-  async nouveau(
-    @Body() user: UserDto,
-  ): Promise<UserEntity> {
+  async nouveau(@Body() user: UserDto): Promise<Partial<UserEntity>> {
     return await this.userService.nouveauRdv(user);
   }
-  @Get('oneRdv/:id')
+  @Get('oneUser/:id')
   async getOneDon(@Param('id') id: string): Promise<UserEntity[]> {
     return await this.userService.getOneDon(id);
   }
@@ -35,12 +33,12 @@ export class UserController {
     return await this.userService.deleteOne(id);
   }
   //deleteDefinitive
-  @Delete('deletePartielle/:id')
+  @Delete('bloquer/:id')
   async deleteDefinitive(@Param('id') id: string) {
     return await this.userService.bloquer(id);
   }
   //restore
-  @Get('restore/:id')
+  @Get('debloquer/:id')
   async restore(@Param('id') id: string) {
     return await this.userService.restore(id);
   }

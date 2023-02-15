@@ -11,6 +11,7 @@ export declare class UserService {
     deleteOne(id: string): Promise<import("typeorm").DeleteResult>;
     bloquer(id: string): Promise<import("typeorm").UpdateResult>;
     restore(id: string): Promise<import("typeorm").UpdateResult>;
-    nouveauRdv(nouveau: UserDto): Promise<UserEntity>;
+    nouveauRdv(users: UserDto): Promise<Partial<UserEntity>>;
     modificationRdv(id: string, userModif: ModifUser): Promise<UserEntity>;
+    login(): Promise<Partial<UserEntity>>;
 }

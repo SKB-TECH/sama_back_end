@@ -22,12 +22,13 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({
         length: 55,
+        unique: true,
     }),
     __metadata("design:type", String)
 ], UserEntity.prototype, "username", void 0);
 __decorate([
     (0, typeorm_1.Column)({
-        length: 16,
+        unique: true,
     }),
     __metadata("design:type", String)
 ], UserEntity.prototype, "password", void 0);
@@ -43,6 +44,10 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], UserEntity.prototype, "role", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], UserEntity.prototype, "salt", void 0);
 __decorate([
     (0, typeorm_1.Column)({
         type: 'enum',

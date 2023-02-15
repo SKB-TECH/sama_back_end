@@ -17,6 +17,9 @@ export class ModifUser {
   @MinLength(8)
   @IsOptional()
   password: string;
+  @IsString()
+  @IsOptional()
+  salt: string;
   @IsOptional()
   @IsString()
   @IsEmail()

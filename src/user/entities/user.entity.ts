@@ -7,10 +7,11 @@ export class UserEntity extends TimeStamps {
   id: string;
   @Column({
     length: 55,
+    unique: true,
   })
   username: string;
   @Column({
-    length: 16,
+    unique: true,
   })
   password: string;
   @Column()
@@ -22,7 +23,8 @@ export class UserEntity extends TimeStamps {
     default: Role.USER,
   })
   role: string;
-
+  @Column()
+  salt: string;
   @Column({
     type: 'enum',
     enum: Status,

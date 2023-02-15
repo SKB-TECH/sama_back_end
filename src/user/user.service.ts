@@ -1,10 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from "@nestjs/common";
 import { Repository } from 'typeorm';
 import { UserEntity } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserDto } from './DTO/UserDto';
 import { ModifUser } from './DTO/ModifUser';
-
+import * as bcrypt from 'bcrypt';
 @Injectable()
 export class UserService {
   constructor(
@@ -46,11 +46,26 @@ export class UserService {
     return await this.userRepository.restore(id);
   }
   //nouveau don
-  async nouveauRdv(nouveau: UserDto): Promise<UserEntity> {
-    const user = await this.userRepository.save(nouveau);
-    return user;
+  async nouveauRdv(users: UserDto): Promise<Partial<UserEntity>> {
+    //const {username, password,email}=nouveau
+    const usert = await this.userRepository.create({
+      ...users,
+    });
+    usert.salt= await bcrypt.genSalt();
+    usert.password= await bcrypt.hash(usert.password, usert.salt);
+    try{
+      await this.userRepository.save(usert)
+    }
+    catch (e) {
+      throw new ConflictException('username ou password doivent etre unique')
+    }
+    return {
+      id:usert.id,
+      username: usert.username,
+      email: usert.email,
+      role: usert.role
+    };
   }
-
   // modification
   async modificationRdv(id: string, userModif: ModifUser): Promise<UserEntity> {
     const user = await this.userRepository.preload({
@@ -63,5 +78,9 @@ export class UserService {
       );
     }
     return await this.userRepository.save(user);
+  }
+  // connection to database
+  async login():Promise<Partial<UserEntity>>{
+    return null;
   }
 }

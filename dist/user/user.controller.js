@@ -51,7 +51,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "nouveau", null);
 __decorate([
-    (0, common_1.Get)('oneRdv/:id'),
+    (0, common_1.Get)('oneUser/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -71,14 +71,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "deleteOne", null);
 __decorate([
-    (0, common_1.Delete)('deletePartielle/:id'),
+    (0, common_1.Delete)('bloquer/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "deleteDefinitive", null);
 __decorate([
-    (0, common_1.Get)('restore/:id'),
+    (0, common_1.Get)('debloquer/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
