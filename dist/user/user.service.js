@@ -18,9 +18,11 @@ const typeorm_1 = require("typeorm");
 const user_entity_1 = require("./entities/user.entity");
 const typeorm_2 = require("@nestjs/typeorm");
 const bcrypt = require("bcrypt");
+const jwt_1 = require("@nestjs/jwt");
 let UserService = class UserService {
-    constructor(userRepository) {
+    constructor(userRepository, jwtService) {
         this.userRepository = userRepository;
+        this.jwtService = jwtService;
     }
     async find(id) {
         const rdv = await this.userRepository.findBy({
@@ -84,12 +86,16 @@ let UserService = class UserService {
         }
         const hashedPssword = await bcrypt.hash(password, user.salt);
         if (hashedPssword === user.password) {
-            return {
+            const payload = {
                 id: user.id,
                 username: user.username,
                 email: user.email,
                 role: user.role,
                 status: user.status
+            };
+            const jwt = await this.jwtService.sign(payload);
+            return {
+                access_token: jwt,
             };
         }
         else {
@@ -100,7 +106,8 @@ let UserService = class UserService {
 UserService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_2.InjectRepository)(user_entity_1.UserEntity)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __metadata("design:paramtypes", [typeorm_1.Repository,
+        jwt_1.JwtService])
 ], UserService);
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map

@@ -11,7 +11,7 @@ import { UserDto } from './DTO/UserDto';
 import { UserEntity } from './entities/user.entity';
 import { ModifUser } from './DTO/ModifUser';
 import { UserService } from './user.service';
-import { LoginDto } from "./LoginDto";
+import { LoginDto } from './LoginDto';
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
@@ -53,7 +53,7 @@ export class UserController {
   }
 
   @Post('login')
-  async login(@Body() credentials: LoginDto): Promise<Partial<UserEntity>> {
+  async login(@Body() credentials: LoginDto) {
     return this.userService.login(credentials);
   }
 }

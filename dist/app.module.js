@@ -18,6 +18,7 @@ const rdv_module_1 = require("./rdv/rdv.module");
 const dotenv = require("dotenv");
 const mailer_1 = require("@nestjs-modules/mailer");
 const user_module_1 = require("./user/user.module");
+const process = require("process");
 dotenv.config();
 let AppModule = class AppModule {
 };

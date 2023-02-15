@@ -3,9 +3,11 @@ import { UserEntity } from './entities/user.entity';
 import { UserDto } from './DTO/UserDto';
 import { ModifUser } from './DTO/ModifUser';
 import { LoginDto } from "./LoginDto";
+import { JwtService } from "@nestjs/jwt";
 export declare class UserService {
     private userRepository;
-    constructor(userRepository: Repository<UserEntity>);
+    private jwtService;
+    constructor(userRepository: Repository<UserEntity>, jwtService: JwtService);
     find(id: string): Promise<UserEntity[]>;
     getOneDon(id: string): Promise<UserEntity[]>;
     getAll(): Promise<UserEntity[]>;
@@ -15,10 +17,6 @@ export declare class UserService {
     nouveauRdv(users: UserDto): Promise<Partial<UserEntity>>;
     modificationRdv(id: string, userModif: ModifUser): Promise<UserEntity>;
     login(credential: LoginDto): Promise<{
-        id: string;
-        username: string;
-        email: string;
-        role: string;
-        status: string;
+        access_token: string;
     }>;
 }

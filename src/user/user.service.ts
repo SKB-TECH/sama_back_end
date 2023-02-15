@@ -6,11 +6,13 @@ import { UserDto } from './DTO/UserDto';
 import { ModifUser } from './DTO/ModifUser';
 import * as bcrypt from 'bcrypt';
 import { LoginDto } from "./LoginDto";
+import { JwtService } from "@nestjs/jwt";
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(UserEntity)
     private userRepository: Repository<UserEntity>,
+    private jwtService: JwtService,
   ) {}
   async find(id: string) {
     const rdv = await this.userRepository.findBy({
@@ -91,12 +93,16 @@ export class UserService {
     }
     const hashedPssword= await bcrypt.hash(password, user.salt);
     if (hashedPssword === user.password){
-        return {
+      const payload = {
           id:user.id,
           username: user.username,
           email: user.email,
           role: user.role,
           status: user.status
+        }
+        const jwt = await this.jwtService.sign(payload)
+        return {
+            access_token: jwt,
         }
     }
     else
@@ -105,3 +111,4 @@ export class UserService {
     }
   }
 }
+
