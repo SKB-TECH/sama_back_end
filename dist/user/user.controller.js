@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const UserDto_1 = require("./DTO/UserDto");
 const ModifUser_1 = require("./DTO/ModifUser");
 const user_service_1 = require("./user.service");
+const LoginDto_1 = require("./LoginDto");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -41,6 +42,9 @@ let UserController = class UserController {
     }
     async updateCv(modifier, id) {
         return await this.userService.modificationRdv(id, modifier);
+    }
+    async login(credentials) {
+        return this.userService.login(credentials);
     }
 };
 __decorate([
@@ -92,6 +96,13 @@ __decorate([
     __metadata("design:paramtypes", [ModifUser_1.ModifUser, String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "updateCv", null);
+__decorate([
+    (0, common_1.Post)('login'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [LoginDto_1.LoginDto]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "login", null);
 UserController = __decorate([
     (0, common_1.Controller)('user'),
     __metadata("design:paramtypes", [user_service_1.UserService])

@@ -14,5 +14,11 @@ export declare class UserService {
     restore(id: string): Promise<import("typeorm").UpdateResult>;
     nouveauRdv(users: UserDto): Promise<Partial<UserEntity>>;
     modificationRdv(id: string, userModif: ModifUser): Promise<UserEntity>;
-    login(credentials: LoginDto): Promise<Partial<UserEntity>>;
+    login(credential: LoginDto): Promise<{
+        id: string;
+        username: string;
+        email: string;
+        role: string;
+        status: string;
+    }>;
 }

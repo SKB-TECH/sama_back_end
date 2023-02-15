@@ -74,10 +74,10 @@ let UserService = class UserService {
         }
         return await this.userRepository.save(user);
     }
-    async login(credentials) {
-        const { username, password } = credentials;
-        const user = await this.userRepository.createQueryBuilder('user')
-            .where('user.username= :username or user.password= :username', { username })
+    async login(credential) {
+        const { username, password } = credential;
+        const user = await this.userRepository.createQueryBuilder("user")
+            .where('user.username = :username or user.password = :username', { username })
             .getOne();
         if (!user) {
             throw new common_1.NotFoundException('username or password sont erroees');
@@ -88,7 +88,8 @@ let UserService = class UserService {
                 id: user.id,
                 username: user.username,
                 email: user.email,
-                role: user.role
+                role: user.role,
+                status: user.status
             };
         }
         else {

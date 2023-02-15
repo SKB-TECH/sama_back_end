@@ -1,13 +1,7 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 export class LoginDto {
-  @IsNotEmpty({
-    message: 'pas des champs vide svp !!',
-  })
-  @IsString()
+  @IsNotEmpty()
   username: string;
-  @IsNotEmpty({
-    message: 'pas des champs vide svp !!',
-  })
-  @IsString()
+  @IsNotEmpty()
   password: string;
 }

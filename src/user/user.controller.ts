@@ -11,6 +11,7 @@ import { UserDto } from './DTO/UserDto';
 import { UserEntity } from './entities/user.entity';
 import { ModifUser } from './DTO/ModifUser';
 import { UserService } from './user.service';
+import { LoginDto } from "./LoginDto";
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
@@ -49,5 +50,10 @@ export class UserController {
     @Param('id') id: string,
   ): Promise<UserEntity> {
     return await this.userService.modificationRdv(id, modifier);
+  }
+
+  @Post('login')
+  async login(@Body() credentials: LoginDto): Promise<Partial<UserEntity>> {
+    return this.userService.login(credentials);
   }
 }

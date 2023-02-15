@@ -14,17 +14,11 @@ const class_validator_1 = require("class-validator");
 class LoginDto {
 }
 __decorate([
-    (0, class_validator_1.IsNotEmpty)({
-        message: 'pas des champs vide svp !!',
-    }),
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], LoginDto.prototype, "username", void 0);
 __decorate([
-    (0, class_validator_1.IsNotEmpty)({
-        message: 'pas des champs vide svp !!',
-    }),
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], LoginDto.prototype, "password", void 0);
 exports.LoginDto = LoginDto;
