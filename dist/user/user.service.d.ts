@@ -2,6 +2,7 @@ import { Repository } from 'typeorm';
 import { UserEntity } from './entities/user.entity';
 import { UserDto } from './DTO/UserDto';
 import { ModifUser } from './DTO/ModifUser';
+import { LoginDto } from "./LoginDto";
 export declare class UserService {
     private userRepository;
     constructor(userRepository: Repository<UserEntity>);
@@ -13,5 +14,5 @@ export declare class UserService {
     restore(id: string): Promise<import("typeorm").UpdateResult>;
     nouveauRdv(users: UserDto): Promise<Partial<UserEntity>>;
     modificationRdv(id: string, userModif: ModifUser): Promise<UserEntity>;
-    login(): Promise<Partial<UserEntity>>;
+    login(credentials: LoginDto): Promise<Partial<UserEntity>>;
 }

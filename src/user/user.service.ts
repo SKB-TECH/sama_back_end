@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UserDto } from './DTO/UserDto';
 import { ModifUser } from './DTO/ModifUser';
 import * as bcrypt from 'bcrypt';
+import { LoginDto } from "./LoginDto";
 @Injectable()
 export class UserService {
   constructor(
@@ -80,7 +81,27 @@ export class UserService {
     return await this.userRepository.save(user);
   }
   // connection to database
-  async login():Promise<Partial<UserEntity>>{
-    return null;
+  async login(credentials: LoginDto):Promise<Partial<UserEntity>>{
+    const {username, password}=credentials;
+    const user= await this.userRepository.createQueryBuilder('user')
+      .where('user.username= :username or user.password= :username',{username})
+      .getOne();
+
+    if (!user){
+      throw new NotFoundException('username or password sont erroees')
+    }
+    const hashedPssword= await bcrypt.hash(password, user.salt);
+    if (hashedPssword === user.password){
+        return {
+          id:user.id,
+          username: user.username,
+          email: user.email,
+          role: user.role
+        }
+    }
+    else
+    {
+      throw new NotFoundException("utiisateur n'existe pas")
+    }
   }
 }

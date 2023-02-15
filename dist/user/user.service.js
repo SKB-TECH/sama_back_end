@@ -74,8 +74,26 @@ let UserService = class UserService {
         }
         return await this.userRepository.save(user);
     }
-    async login() {
-        return null;
+    async login(credentials) {
+        const { username, password } = credentials;
+        const user = await this.userRepository.createQueryBuilder('user')
+            .where('user.username= :username or user.password= :username', { username })
+            .getOne();
+        if (!user) {
+            throw new common_1.NotFoundException('username or password sont erroees');
+        }
+        const hashedPssword = await bcrypt.hash(password, user.salt);
+        if (hashedPssword === user.password) {
+            return {
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                role: user.role
+            };
+        }
+        else {
+            throw new common_1.NotFoundException("utiisateur n'existe pas");
+        }
     }
 };
 UserService = __decorate([
