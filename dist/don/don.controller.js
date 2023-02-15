@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const don_service_1 = require("./don.service");
 const nouveauDon_1 = require("./DTO/nouveauDon");
 const modifDon_1 = require("./DTO/modifDon");
+const jwt_auth_guards_1 = require("../user/Guards/jwt-auth.guards");
 let DonController = class DonController {
     constructor(donService) {
         this.donService = donService;
@@ -52,6 +53,7 @@ __decorate([
 ], DonController.prototype, "nouveau", null);
 __decorate([
     (0, common_1.Get)('oneDon/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -59,12 +61,14 @@ __decorate([
 ], DonController.prototype, "getOneDon", null);
 __decorate([
     (0, common_1.Get)('/all'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], DonController.prototype, "getAllDon", null);
 __decorate([
     (0, common_1.Delete)('deleteOne/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -72,6 +76,7 @@ __decorate([
 ], DonController.prototype, "deleteOne", null);
 __decorate([
     (0, common_1.Delete)('deletePartielle/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -79,6 +84,7 @@ __decorate([
 ], DonController.prototype, "deleteDefinitive", null);
 __decorate([
     (0, common_1.Get)('restore/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -86,6 +92,7 @@ __decorate([
 ], DonController.prototype, "restore", null);
 __decorate([
     (0, common_1.Patch)('update/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

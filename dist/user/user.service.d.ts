@@ -2,7 +2,7 @@ import { Repository } from 'typeorm';
 import { UserEntity } from './entities/user.entity';
 import { UserDto } from './DTO/UserDto';
 import { ModifUser } from './DTO/ModifUser';
-import { LoginDto } from "./LoginDto";
+import { LoginDto } from "./DTO/LoginDto";
 import { JwtService } from "@nestjs/jwt";
 export declare class UserService {
     private userRepository;

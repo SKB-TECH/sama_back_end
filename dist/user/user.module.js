@@ -15,6 +15,7 @@ const user_entity_1 = require("./entities/user.entity");
 const jwt_1 = require("@nestjs/jwt");
 const passport_1 = require("@nestjs/passport");
 const dotenv = require("dotenv");
+const strategies_1 = require("./strategies/strategies");
 dotenv.config();
 let UserModule = class UserModule {
 };
@@ -32,7 +33,7 @@ UserModule = __decorate([
                 },
             }),
         ],
-        providers: [user_service_1.UserService],
+        providers: [user_service_1.UserService, strategies_1.JwtStrategy],
         controllers: [user_controller_1.UserController],
     })
 ], UserModule);

@@ -11,7 +11,7 @@ import { UserDto } from './DTO/UserDto';
 import { UserEntity } from './entities/user.entity';
 import { ModifUser } from './DTO/ModifUser';
 import { UserService } from './user.service';
-import { LoginDto } from './LoginDto';
+import { LoginDto } from './DTO/LoginDto';
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
