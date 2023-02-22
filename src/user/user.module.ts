@@ -6,7 +6,7 @@ import { UserEntity } from './entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import * as dotenv from 'dotenv';
-import { JwtStrategy } from "./strategies/strategies";
+import { JwtStrategy } from './strategies/strategies';
 dotenv.config();
 @Module({
   imports: [
@@ -17,7 +17,7 @@ dotenv.config();
     JwtModule.register({
       secret: process.env.SECRET_KEY,
       signOptions: {
-        expiresIn: 3600,
+        expiresIn: 1000 * 60 * 60 * 24,
       },
     }),
   ],

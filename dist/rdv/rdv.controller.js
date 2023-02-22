@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const rdv_service_1 = require("./rdv.service");
 const RdvDto_1 = require("./DTO/RdvDto");
 const modifRdv_1 = require("./DTO/modifRdv");
+const jwt_auth_guards_1 = require("../user/Guards/jwt-auth.guards");
 let RdvController = class RdvController {
     constructor(rdvService) {
         this.rdvService = rdvService;
@@ -53,6 +54,7 @@ __decorate([
 ], RdvController.prototype, "nouveau", null);
 __decorate([
     (0, common_1.Get)('oneRdv/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -60,12 +62,14 @@ __decorate([
 ], RdvController.prototype, "getOneDon", null);
 __decorate([
     (0, common_1.Get)('/all'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], RdvController.prototype, "getAllDon", null);
 __decorate([
     (0, common_1.Delete)('deleteOne/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -73,6 +77,7 @@ __decorate([
 ], RdvController.prototype, "deleteOne", null);
 __decorate([
     (0, common_1.Delete)('deletePartielle/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -80,6 +85,7 @@ __decorate([
 ], RdvController.prototype, "deleteDefinitive", null);
 __decorate([
     (0, common_1.Get)('restore/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -87,6 +93,7 @@ __decorate([
 ], RdvController.prototype, "restore", null);
 __decorate([
     (0, common_1.Patch)('update/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

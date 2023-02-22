@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const meddecin_service_1 = require("./meddecin.service");
 const nouveauMeddecin_1 = require("./DTO/nouveauMeddecin");
 const meddecinModif_1 = require("./DTO/meddecinModif");
+const jwt_auth_guards_1 = require("../user/Guards/jwt-auth.guards");
 let MeddecinController = class MeddecinController {
     constructor(meddecinService) {
         this.meddecinService = meddecinService;
@@ -45,6 +46,7 @@ let MeddecinController = class MeddecinController {
 };
 __decorate([
     (0, common_1.Post)('nouveau'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [nouveauMeddecin_1.NouveauMeddecin]),
@@ -52,6 +54,7 @@ __decorate([
 ], MeddecinController.prototype, "nouveau", null);
 __decorate([
     (0, common_1.Get)('oneMed/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -59,12 +62,14 @@ __decorate([
 ], MeddecinController.prototype, "getOneDon", null);
 __decorate([
     (0, common_1.Get)('/all'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], MeddecinController.prototype, "getAllDon", null);
 __decorate([
     (0, common_1.Delete)('deleteOne/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -72,6 +77,7 @@ __decorate([
 ], MeddecinController.prototype, "deleteOne", null);
 __decorate([
     (0, common_1.Delete)('deletePartielle/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -79,6 +85,7 @@ __decorate([
 ], MeddecinController.prototype, "deleteDefinitive", null);
 __decorate([
     (0, common_1.Get)('restore/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -86,6 +93,7 @@ __decorate([
 ], MeddecinController.prototype, "restore", null);
 __decorate([
     (0, common_1.Patch)('update/:id'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

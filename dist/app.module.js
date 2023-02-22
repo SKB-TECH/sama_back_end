@@ -18,6 +18,7 @@ const rdv_module_1 = require("./rdv/rdv.module");
 const dotenv = require("dotenv");
 const mailer_1 = require("@nestjs-modules/mailer");
 const user_module_1 = require("./user/user.module");
+const raports_module_1 = require("./raports/raports.module");
 const process = require("process");
 dotenv.config();
 let AppModule = class AppModule {
@@ -54,6 +55,7 @@ AppModule = __decorate([
             meddecin_module_1.MeddecinModule,
             rdv_module_1.RdvModule,
             user_module_1.UserModule,
+            raports_module_1.RaportsModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
