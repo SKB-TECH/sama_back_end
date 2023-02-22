@@ -2,7 +2,7 @@ import { Repository } from 'typeorm';
 import { RapportEntity } from './entities/Rapport.entity';
 import { NouveauRapport } from './DTO/NouveauRapport';
 import { ModifRapport } from './DTO/ModifRapport';
-export declare class RaportsService {
+export declare class RaportService {
     private RapportRepository;
     constructor(RapportRepository: Repository<RapportEntity>);
     find(id: string): Promise<RapportEntity[]>;

@@ -1,7 +1,7 @@
 import { DonService } from './don.service';
 import { donEntity } from './entities/don.entity';
 import { NouveauDon } from './DTO/nouveauDon';
-import { ModifDon } from "./DTO/modifDon";
+import { ModifDon } from './DTO/modifDon';
 export declare class DonController {
     private donService;
     constructor(donService: DonService);

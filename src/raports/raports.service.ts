@@ -9,7 +9,7 @@ import { NouveauRapport } from './DTO/NouveauRapport';
 import { ModifRapport } from './DTO/ModifRapport';
 
 @Injectable()
-export class RaportsService {
+export class RaportService {
   constructor(
     @InjectRepository(RapportEntity)
     private RapportRepository: Repository<RapportEntity>,
