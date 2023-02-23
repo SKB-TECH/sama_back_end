@@ -5,14 +5,15 @@ import {
   Get,
   Param,
   Patch,
-  Post, UseGuards
-} from "@nestjs/common";
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { RdvService } from './rdv.service';
 import { RdvDto } from './DTO/RdvDto';
 import { RdvEntity } from './entities/rdv.entity';
 import { ModifRdv } from './DTO/modifRdv';
-import { SendMail } from "./DTO/SendMail";
-import { JwtAuthGuard } from "../user/Guards/jwt-auth.guards";
+import { SendMail } from './DTO/SendMail';
+import { JwtAuthGuard } from '../user/Guards/jwt-auth.guards';
 
 @Controller('rdv')
 export class RdvController {
@@ -21,9 +22,9 @@ export class RdvController {
   @Post('nouveau/:email')
   async nouveau(
     @Body() rdv: RdvDto,
-    @Param('med') med:string
+    @Param('med') med: string,
   ): Promise<RdvEntity> {
-    return await this.rdvService.nouveauRdv(rdv,med);
+    return await this.rdvService.nouveauRdv(rdv, med);
   }
   @Get('oneRdv/:id')
   @UseGuards(JwtAuthGuard)

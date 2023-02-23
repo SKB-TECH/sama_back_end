@@ -1,12 +1,16 @@
-import { ConflictException, Injectable, NotFoundException } from "@nestjs/common";
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { UserEntity } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserDto } from './DTO/UserDto';
 import { ModifUser } from './DTO/ModifUser';
 import * as bcrypt from 'bcrypt';
-import { LoginDto } from "./DTO/LoginDto";
-import { JwtService } from "@nestjs/jwt";
+import { LoginDto } from './DTO/LoginDto';
+import { JwtService } from '@nestjs/jwt';
 @Injectable()
 export class UserService {
   constructor(
@@ -54,19 +58,18 @@ export class UserService {
     const usert = await this.userRepository.create({
       ...users,
     });
-    usert.salt= await bcrypt.genSalt();
-    usert.password= await bcrypt.hash(usert.password, usert.salt);
-    try{
-      await this.userRepository.save(usert)
-    }
-    catch (e) {
-      throw new ConflictException('username ou password doivent etre unique')
+    usert.salt = await bcrypt.genSalt();
+    usert.password = await bcrypt.hash(usert.password, usert.salt);
+    try {
+      await this.userRepository.save(usert);
+    } catch (e) {
+      throw new ConflictException('username ou password doivent etre unique');
     }
     return {
-      id:usert.id,
+      id: usert.id,
       username: usert.username,
       email: usert.email,
-      role: usert.role
+      role: usert.role,
     };
   }
   // modification
@@ -83,32 +86,32 @@ export class UserService {
     return await this.userRepository.save(user);
   }
   // connection to database
-  async login(credential: LoginDto){
-    const {username, password} = credential;
-    const user = await this.userRepository.createQueryBuilder("user")
-      .where('user.username = :username or user.password = :username',{username})
+  async login(credential: LoginDto) {
+    const { username, password } = credential;
+    const user = await this.userRepository
+      .createQueryBuilder('user')
+      .where('user.username = :username or user.password = :username', {
+        username,
+      })
       .getOne();
-    if (!user){
-      throw new NotFoundException('username or password sont erroees')
+    if (!user) {
+      throw new NotFoundException('username or password sont erroees');
     }
-    const hashedPssword= await bcrypt.hash(password, user.salt);
-    if (hashedPssword === user.password){
+    const hashedPssword = await bcrypt.hash(password, user.salt);
+    if (hashedPssword === user.password) {
       const payload = {
-          id:user.id,
-          username: user.username,
-          email: user.email,
-          role: user.role,
-          status: user.status
-        }
-        const jwt = await this.jwtService.sign(payload)
-        return {
-            access_token: jwt,
-        }
-    }
-    else
-    {
-      throw new NotFoundException("utiisateur n'existe pas")
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        role: user.role,
+        status: user.status,
+      };
+      const jwt = await this.jwtService.sign(payload);
+      return {
+        access_token: jwt,
+      };
+    } else {
+      throw new NotFoundException("utiisateur n'existe pas");
     }
   }
 }
-

@@ -23,7 +23,8 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { UserModule } from './user/user.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
-import { RaportsModule } from './raports/raports.module';
+import { RaportModule } from './raport/raports.module';
+import { RptsModule } from './rpts/rpts.module';
 import * as process from 'process';
 
 dotenv.config();
@@ -58,7 +59,7 @@ dotenv.config();
     MeddecinModule,
     RdvModule,
     UserModule,
-    RaportsModule,
+    RaportModule,
   ],
   controllers: [AppController],
   providers: [AppService],
