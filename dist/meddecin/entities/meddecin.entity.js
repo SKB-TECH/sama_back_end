@@ -13,6 +13,7 @@ exports.MeddecinEntity = void 0;
 const typeorm_1 = require("typeorm");
 const meddecin_enum_1 = require("../meddecin_enum/meddecin_enum");
 const timestamp_entity_1 = require("../../Times/timestamp.entity");
+const Rapport_entity_1 = require("../../raport/entities/Rapport.entity");
 let MeddecinEntity = class MeddecinEntity extends timestamp_entity_1.TimeStamps {
 };
 __decorate([
@@ -48,6 +49,10 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], MeddecinEntity.prototype, "photo", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)((type) => Rapport_entity_1.RapportEntity, (rapport) => rapport.meddecin),
+    __metadata("design:type", Array)
+], MeddecinEntity.prototype, "rapport", void 0);
 MeddecinEntity = __decorate([
     (0, typeorm_1.Entity)('meddecin')
 ], MeddecinEntity);

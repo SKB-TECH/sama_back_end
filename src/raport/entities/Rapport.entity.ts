@@ -1,5 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { TimeStamps } from 'src/Times/timestamp.entity';
+import { MeddecinEntity } from '../../meddecin/entities/meddecin.entity';
+import { type } from 'os';
 
 @Entity('rapport')
 export class RapportEntity extends TimeStamps {
@@ -14,4 +16,7 @@ export class RapportEntity extends TimeStamps {
 
   @Column()
   description: string;
+
+  @ManyToOne((type) => MeddecinEntity, (meddecin) => meddecin.rapport)
+  meddecin: MeddecinEntity;
 }
