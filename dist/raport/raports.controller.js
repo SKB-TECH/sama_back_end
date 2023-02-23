@@ -22,8 +22,9 @@ let RaportController = class RaportController {
     constructor(RapportService) {
         this.RapportService = RapportService;
     }
-    async nouveau(rapport) {
-        return await this.RapportService.nouveauRapport(rapport);
+    async nouveau(rapport, request) {
+        const user = request.user;
+        return await this.RapportService.nouveauRapport(rapport, user);
     }
     async getOneDon(id) {
         return await this.RapportService.getOneDon(id);
@@ -46,9 +47,11 @@ let RaportController = class RaportController {
 };
 __decorate([
     (0, common_1.Post)('nouveau'),
+    (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [NouveauRapport_1.NouveauRapport]),
+    __metadata("design:paramtypes", [NouveauRapport_1.NouveauRapport, Object]),
     __metadata("design:returntype", Promise)
 ], RaportController.prototype, "nouveau", null);
 __decorate([

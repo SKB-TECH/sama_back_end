@@ -11,6 +11,6 @@ export declare class RaportService {
     deleteOne(id: string): Promise<import("typeorm").DeleteResult>;
     deletePartielle(id: string): Promise<import("typeorm").UpdateResult>;
     restore(id: string): Promise<import("typeorm").UpdateResult>;
-    nouveauRapport(nouveau: NouveauRapport): Promise<RapportEntity>;
+    nouveauRapport(nouveau: NouveauRapport, user: any): Promise<RapportEntity>;
     modificationRapport(id: string, rapportModif: ModifRapport): Promise<RapportEntity>;
 }

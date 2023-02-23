@@ -28,7 +28,4 @@ export class MeddecinEntity extends TimeStamps {
 
   @Column()
   photo: string;
-
-  @OneToMany((type) => RapportEntity, (rapport) => rapport.meddecin)
-  rapport: RapportEntity[];
 }

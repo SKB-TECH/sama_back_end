@@ -13,6 +13,7 @@ exports.UserEntity = void 0;
 const typeorm_1 = require("typeorm");
 const role_1 = require("../user_enum/role");
 const timestamp_entity_1 = require("../../Times/timestamp.entity");
+const Rapport_entity_1 = require("../../raport/entities/Rapport.entity");
 let UserEntity = class UserEntity extends timestamp_entity_1.TimeStamps {
 };
 __decorate([
@@ -56,6 +57,10 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], UserEntity.prototype, "status", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)((type) => Rapport_entity_1.RapportEntity, (rapport) => rapport.user),
+    __metadata("design:type", Array)
+], UserEntity.prototype, "rapport", void 0);
 UserEntity = __decorate([
     (0, typeorm_1.Entity)('user')
 ], UserEntity);

@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Role, Status } from '../user_enum/role';
 import { TimeStamps } from '../../Times/timestamp.entity';
+import { RapportEntity } from 'src/raport/entities/Rapport.entity';
 @Entity('user')
 export class UserEntity extends TimeStamps {
   @PrimaryGeneratedColumn('uuid')
@@ -31,4 +32,7 @@ export class UserEntity extends TimeStamps {
     default: Status.ACTIVE,
   })
   status: string;
+
+  @OneToMany((type) => RapportEntity, (rapport) => rapport.user)
+  rapport: RapportEntity[];
 }

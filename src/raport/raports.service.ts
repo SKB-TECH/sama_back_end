@@ -1,9 +1,11 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, UsePipes } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { RapportEntity } from './entities/Rapport.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { NouveauRapport } from './DTO/NouveauRapport';
 import { ModifRapport } from './DTO/ModifRapport';
+import { UserEntity } from '../user/entities/user.entity';
+import { MeddecinEntity } from '../meddecin/entities/meddecin.entity';
 
 @Injectable()
 export class RaportService {
@@ -49,8 +51,10 @@ export class RaportService {
     return await this.RapportRepository.restore(id);
   }
   //nouveau don
-  async nouveauRapport(nouveau: NouveauRapport): Promise<RapportEntity> {
-    return await this.RapportRepository.save(nouveau);
+  async nouveauRapport(nouveau: NouveauRapport, user): Promise<RapportEntity> {
+    const newRapport = await this.RapportRepository.create(nouveau);
+    newRapport.user = user;
+    return await this.RapportRepository.save(newRapport);
   }
 
   // modification

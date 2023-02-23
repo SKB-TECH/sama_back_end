@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Request,
   UseGuards,
 } from '@nestjs/common';
 import { RaportService } from './raports.service';
@@ -18,8 +19,13 @@ import { ModifRapport } from './DTO/ModifRapport';
 export class RaportController {
   constructor(private RapportService: RaportService) {}
   @Post('nouveau')
-  async nouveau(@Body() rapport: NouveauRapport): Promise<RapportEntity> {
-    return await this.RapportService.nouveauRapport(rapport);
+  @UseGuards(JwtAuthGuard)
+  async nouveau(
+    @Body() rapport: NouveauRapport,
+    @Request() request,
+  ): Promise<RapportEntity> {
+    const user = request.user;
+    return await this.RapportService.nouveauRapport(rapport, user);
   }
   @Get('oneRapport/:id')
   @UseGuards(JwtAuthGuard)

@@ -49,8 +49,10 @@ let RaportService = class RaportService {
     async restore(id) {
         return await this.RapportRepository.restore(id);
     }
-    async nouveauRapport(nouveau) {
-        return await this.RapportRepository.save(nouveau);
+    async nouveauRapport(nouveau, user) {
+        const newRapport = await this.RapportRepository.create(nouveau);
+        newRapport.user = user;
+        return await this.RapportRepository.save(newRapport);
     }
     async modificationRapport(id, rapportModif) {
         const donM = await this.RapportRepository.preload(Object.assign({ id }, rapportModif));
