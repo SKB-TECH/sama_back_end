@@ -16,16 +16,25 @@ class NouveauRapport {
 __decorate([
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)({
+        message: 'le champ noms ne doit pas etre vide',
+    }),
     __metadata("design:type", String)
-], NouveauRapport.prototype, "noms", void 0);
+], NouveauRapport.prototype, "patient", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)({
+        message: 'le champ objet ne doit pas etre vide',
+    }),
     __metadata("design:type", String)
 ], NouveauRapport.prototype, "objet", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)({
+        message: 'le champ description ne doit pas etre vide',
+    }),
     __metadata("design:type", String)
 ], NouveauRapport.prototype, "description", void 0);
 __decorate([

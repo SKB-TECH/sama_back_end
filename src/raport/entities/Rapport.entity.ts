@@ -7,11 +7,11 @@ export class RapportEntity extends TimeStamps {
   id: string;
 
   @Column()
-  nomsPatient: string;
+  patient: string;
 
   @Column()
   objet: string;
 
   @Column()
-  desrciption: string;
+  description: string;
 }

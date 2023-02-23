@@ -21,7 +21,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], RapportEntity.prototype, "nomsPatient", void 0);
+], RapportEntity.prototype, "patient", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -29,7 +29,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], RapportEntity.prototype, "desrciption", void 0);
+], RapportEntity.prototype, "description", void 0);
 RapportEntity = __decorate([
     (0, typeorm_1.Entity)('rapport')
 ], RapportEntity);

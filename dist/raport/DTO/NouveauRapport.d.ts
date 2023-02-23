@@ -1,5 +1,5 @@
 export declare class NouveauRapport {
-    noms: string;
+    patient: string;
     objet: string;
     description: string;
     medeccin: [];
