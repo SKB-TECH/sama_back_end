@@ -14,6 +14,8 @@ import { JwtAuthGuard } from 'src/user/Guards/jwt-auth.guards';
 import { NouveauRapport } from './DTO/NouveauRapport';
 import { RapportEntity } from './entities/Rapport.entity';
 import { ModifRapport } from './DTO/ModifRapport';
+import { User } from 'src/decorates/user.decorator';
+import { UserEntity } from '../user/entities/user.entity';
 
 @Controller('raports')
 export class RaportController {
@@ -22,9 +24,8 @@ export class RaportController {
   @UseGuards(JwtAuthGuard)
   async nouveau(
     @Body() rapport: NouveauRapport,
-    @Request() request,
+    @User() user: UserEntity,
   ): Promise<RapportEntity> {
-    const user = request.user;
     return await this.RapportService.nouveauRapport(rapport, user);
   }
   @Get('oneRapport/:id')
@@ -34,8 +35,8 @@ export class RaportController {
   }
   @Get('all')
   @UseGuards(JwtAuthGuard)
-  async getAll(): Promise<RapportEntity[]> {
-    return await this.RapportService.getAll();
+  async getAll(@User() user: UserEntity): Promise<RapportEntity[]> {
+    return await this.RapportService.getAll(user);
   }
 
   //deletePartielle

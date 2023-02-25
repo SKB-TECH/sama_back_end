@@ -32,8 +32,12 @@ export class RaportService {
   }
 
   //   get all
-  async getAll() {
-    const rapport = await this.RapportRepository.find();
+  async getAll(user: UserEntity) {
+    const rapport = await this.RapportRepository.find({
+      relations: {
+        user: true,
+      },
+    });
     if (!rapport) {
       throw new NotFoundException("Vous n'avez aucun rapport");
     }

@@ -33,8 +33,12 @@ let RaportService = class RaportService {
     async getOneDon(id) {
         return this.find(id);
     }
-    async getAll() {
-        const rapport = await this.RapportRepository.find();
+    async getAll(user) {
+        const rapport = await this.RapportRepository.find({
+            relations: {
+                user: true,
+            },
+        });
         if (!rapport) {
             throw new common_1.NotFoundException("Vous n'avez aucun rapport");
         }

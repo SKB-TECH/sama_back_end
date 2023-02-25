@@ -18,19 +18,20 @@ const raports_service_1 = require("./raports.service");
 const jwt_auth_guards_1 = require("../user/Guards/jwt-auth.guards");
 const NouveauRapport_1 = require("./DTO/NouveauRapport");
 const ModifRapport_1 = require("./DTO/ModifRapport");
+const user_decorator_1 = require("../decorates/user.decorator");
+const user_entity_1 = require("../user/entities/user.entity");
 let RaportController = class RaportController {
     constructor(RapportService) {
         this.RapportService = RapportService;
     }
-    async nouveau(rapport, request) {
-        const user = request.user;
+    async nouveau(rapport, user) {
         return await this.RapportService.nouveauRapport(rapport, user);
     }
     async getOneDon(id) {
         return await this.RapportService.getOneDon(id);
     }
-    async getAll() {
-        return await this.RapportService.getAll();
+    async getAll(user) {
+        return await this.RapportService.getAll(user);
     }
     async deleteOne(id) {
         return await this.RapportService.deleteOne(id);
@@ -49,9 +50,10 @@ __decorate([
     (0, common_1.Post)('nouveau'),
     (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
-    __param(1, (0, common_1.Request)()),
+    __param(1, (0, user_decorator_1.User)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [NouveauRapport_1.NouveauRapport, Object]),
+    __metadata("design:paramtypes", [NouveauRapport_1.NouveauRapport,
+        user_entity_1.UserEntity]),
     __metadata("design:returntype", Promise)
 ], RaportController.prototype, "nouveau", null);
 __decorate([
@@ -65,8 +67,9 @@ __decorate([
 __decorate([
     (0, common_1.Get)('all'),
     (0, common_1.UseGuards)(jwt_auth_guards_1.JwtAuthGuard),
+    __param(0, (0, user_decorator_1.User)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [user_entity_1.UserEntity]),
     __metadata("design:returntype", Promise)
 ], RaportController.prototype, "getAll", null);
 __decorate([
